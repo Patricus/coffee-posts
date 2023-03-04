@@ -16,6 +16,7 @@ import { PostModule } from './post/post.module';
       database: process.env.DB_DATABASE || 'coffee_db',
       autoLoadEntities: true,
       synchronize: process.env.DEV ? true : false,
+      migrations: [__dirname + '/migrations/*.ts'],
     }),
     CoffeeModule,
     PostModule,
