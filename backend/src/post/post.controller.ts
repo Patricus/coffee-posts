@@ -39,7 +39,11 @@ export class PostController {
 
   @Get('coffee/:search')
   findCoffee(@Param('search') search: string) {
-    return this.postService.findCoffee(search);
+    if (isNaN(+search)) {
+      return this.postService.findCoffee(search);
+    } else {
+      return this.postService.findCoffee(+search);
+    }
   }
 
   @Patch(':id')

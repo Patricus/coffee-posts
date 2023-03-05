@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Coffee } from 'src/coffee/entities/coffee.entity';
 
@@ -35,6 +36,7 @@ export class Post {
   })
   updated_at: Date;
 
-  @ManyToOne(() => Coffee, (coffee) => coffee.id)
+  @ManyToOne(() => Coffee, (coffee) => coffee.id, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'coffee_id' })
   coffee: Coffee;
 }
