@@ -6,6 +6,7 @@ import { Post } from './entities/post.entity';
 import { Repository, DataSource } from 'typeorm';
 
 type Order = 'asc' | 'desc';
+type Search = number | string;
 @Injectable()
 export class PostService {
   constructor(
@@ -64,6 +65,29 @@ export class PostService {
 
     await queryRunner.release();
 
+    return post;
+  }
+
+  async findCoffee(search: Search) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    let post = {};
+    if (typeof search === 'number') {
+      post = await queryRunner.manager.find(Post, {
+        where: {
+          id: search,
+        },
+      });
+    } else {
+      post = await queryRunner.manager.find(Post, {
+        where: {
+          title: search,
+        },
+      });
+    }
     return post;
   }
 

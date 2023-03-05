@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -26,14 +27,19 @@ export class PostController {
     return { status: 'good' };
   }
 
-  @Get(':order?')
-  findAll(@Param('order') order: Order) {
+  @Get()
+  findAll(@Query('order') order: Order) {
     return this.postService.findAll(order);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.postService.findOne(+id);
+  }
+
+  @Get('coffee/:search')
+  findCoffee(@Param('search') search: string) {
+    return this.postService.findCoffee(search);
   }
 
   @Patch(':id')

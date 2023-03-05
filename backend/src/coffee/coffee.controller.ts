@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CoffeeService } from './coffee.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -27,8 +28,8 @@ export class CoffeeController {
     return { status: 'good' };
   }
 
-  @Get(':order?')
-  findAll(@Param('order') order: Order) {
+  @Get()
+  findAll(@Query('order') order: Order) {
     return this.coffeeService.findAll(order);
   }
 
