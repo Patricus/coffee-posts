@@ -3,6 +3,7 @@ import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 
+type Order = 'asc' | 'desc';
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
@@ -12,9 +13,14 @@ export class PostController {
     return this.postService.create(createPostDto);
   }
 
+  @Get('ping')
+  Ping() {
+    return { status: 'good' };
+  }
+
   @Get()
-  findAll() {
-    return this.postService.findAll();
+  findAll(@Body('order') order: Order) {
+    return this.postService.findAll(order);
   }
 
   @Get(':id')
