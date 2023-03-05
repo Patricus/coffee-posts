@@ -5,6 +5,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Coffee } from './entities/coffee.entity';
 import { Repository, DataSource } from 'typeorm';
 
+type Order = 'asc' | 'desc';
+
 @Injectable()
 export class CoffeeService {
   constructor(
@@ -22,27 +24,85 @@ export class CoffeeService {
     try {
       await queryRunner.manager.save(Coffee, createCoffeeDto);
       await queryRunner.commitTransaction();
-    } catch (err) {
+    } catch (error) {
       await queryRunner.rollbackTransaction();
-    } finally {
       await queryRunner.release();
+      return { error };
     }
-    return 'This action adds a new coffee';
+    await queryRunner.release();
+
+    return createCoffeeDto;
   }
 
-  findAll() {
-    return `This action returns all coffee`;
+  async findAll(order: Order = 'asc') {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    const coffees = await queryRunner.manager.find(Coffee, {
+      order: {
+        name: order,
+      },
+    });
+
+    await queryRunner.release();
+
+    return coffees;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} coffee`;
+  async findOne(id: number) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    const coffee = await queryRunner.manager.findOne(Coffee, {
+      where: {
+        id,
+      },
+    });
+
+    await queryRunner.release();
+
+    return coffee;
   }
 
-  update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
-    return `This action updates a #${id} coffee`;
+  async update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.update(Coffee, id, updateCoffeeDto);
+      await queryRunner.commitTransaction();
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      return { error };
+    }
+    await queryRunner.release();
+
+    return updateCoffeeDto;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} coffee`;
+  async remove(id: number) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.delete(Coffee, id);
+      await queryRunner.commitTransaction();
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
+      return { error };
+    }
+    await queryRunner.release();
+
+    return { id };
   }
 }

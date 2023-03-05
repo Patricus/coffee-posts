@@ -18,10 +18,10 @@ export class Post {
   @Column({ name: 'rating', type: 'numeric' })
   rating: number;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
   @ManyToOne(() => Coffee, (coffee) => coffee.id)

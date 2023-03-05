@@ -28,12 +28,15 @@ export class CoffeeController {
   }
 
   @Get()
-  findAll(order: Order) {
-    return this.coffeeService.findAll();
+  findAll(@Body('order') order: Order) {
+    return this.coffeeService.findAll(order);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
+    if (isNaN(+id)) {
+      return { error: 'id must be a number' };
+    }
     return this.coffeeService.findOne(+id);
   }
 
