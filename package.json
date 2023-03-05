@@ -1,0 +1,21 @@
+{
+  "name": "aa_mock_takehomechallenge",
+  "version": "1.0.0",
+  "description": "Welcome to a/A's take home challenge, this should be a fun project to put to practice what you've just learned from recap academy. There are instructions for each part (front and backend) in their respective folders. You are free to use any backend and frontend framework you like for this takehome. The requirements listed in each section are by no means a ceiling, please feel free to expand upon anything in the takehome if you have time to do so.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typeorm": "cd backend && npm run typeorm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Patricus/coffee-posts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Patricus/coffee-posts/issues"
+  },
+  "homepage": "https://github.com/Patricus/coffee-posts#readme"
+}

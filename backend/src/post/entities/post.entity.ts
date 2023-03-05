@@ -12,7 +12,7 @@ export class Post {
   @Column()
   coffee_id: number;
 
-  @Column({ name: 'text', type: 'longtext' })
+  @Column({ name: 'text', type: 'text' })
   text: string;
 
   @Column({ name: 'rating', type: 'numeric' })
