@@ -27,8 +27,8 @@ export class CoffeeController {
     return { status: 'good' };
   }
 
-  @Get()
-  findAll(@Body('order') order: Order) {
+  @Get(':order?')
+  findAll(@Param('order') order: Order) {
     return this.coffeeService.findAll(order);
   }
 
