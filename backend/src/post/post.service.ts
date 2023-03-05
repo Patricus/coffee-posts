@@ -82,9 +82,7 @@ export class PostService {
     })();
     const post = await queryRunner.manager.find(Post, {
       relations: { coffee: true },
-      where: {
-        coffee: { id: 1 },
-      },
+      where,
     });
     await queryRunner.release();
 
