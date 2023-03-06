@@ -1,0 +1,11 @@
+.modal {
+    position: absolute;
+    padding: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0 0 4px 1px orange;
+    background-color: white;
+    z-index: 1;
+}
+.tital {
+}

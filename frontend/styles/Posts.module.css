@@ -24,6 +24,7 @@
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     box-shadow: 1px -1px 1px orange;
+    cursor: pointer;
 }
 
 .newButton:hover {
@@ -34,4 +35,5 @@
     margin-right: 0;
     margin-left: auto;
     border-radius: 5px;
+    cursor: pointer;
 }
