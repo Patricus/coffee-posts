@@ -21,6 +21,10 @@ function Coffees() {
         setCoffees(coffees => [...coffees, coffee]);
     };
 
+    const deleteCoffee = (id: number) => {
+        setCoffees(coffees => coffees.filter(coffee => coffee.id !== id));
+    };
+
     React.useEffect(() => {
         fetch("/api/coffee")
             .then(res => res.json())
@@ -31,7 +35,9 @@ function Coffees() {
         <section className={styles.main}>
             <CoffeeTitle addCoffee={addCoffee} />
             {coffees.length &&
-                coffees.map((coffee: any) => <SingleCoffee key={coffee.id} {...coffee} />)}
+                coffees.map((coffee: any) => (
+                    <SingleCoffee key={coffee.id} coffee={coffee} deleteCoffee={deleteCoffee} />
+                ))}
         </section>
     );
 }

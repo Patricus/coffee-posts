@@ -13,9 +13,17 @@
 .container:hover {
     box-shadow: 0 0 4px 1px orange;
 }
+.container:hover .deleteBtn {
+    visibility: visible;
+}
 .icon {
     margin: 0;
 }
 .nameYear {
     margin: 0;
+}
+.deleteBtn {
+    visibility: hidden;
+    margin-right: 5px;
+    margin-left: auto;
 }
