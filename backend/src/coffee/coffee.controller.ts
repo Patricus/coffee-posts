@@ -19,8 +19,9 @@ export class CoffeeController {
   constructor(private readonly coffeeService: CoffeeService) {}
 
   @Post()
-  create(@Body() createCoffeeDto: CreateCoffeeDto) {
-    return this.coffeeService.create(createCoffeeDto);
+  create(@Body() CreateCoffeeDto: CreateCoffeeDto) {
+    CreateCoffeeDto.caffeine_percentage = CreateCoffeeDto.caffeine_content / 6;
+    return this.coffeeService.create(CreateCoffeeDto);
   }
 
   @Get('ping')

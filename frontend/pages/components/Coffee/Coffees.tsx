@@ -1,10 +1,25 @@
 import React from "react";
 import CoffeeTitle from "./CoffeeTitle";
 import SingleCoffee from "./SingleCoffee";
+import { createContext } from "react";
 import styles from "../../../styles/Coffees.module.css";
 
+interface Coffee {
+    id: number;
+    name: string;
+    year: number;
+    caffeine_content: number;
+    caffeine_percentage: number;
+    created_at: string;
+    updated_at: string;
+}
+
 function Coffees() {
-    const [coffees, setCoffees] = React.useState([]);
+    const [coffees, setCoffees] = React.useState<Coffee[]>([]);
+
+    const addCoffee = (coffee: any) => {
+        setCoffees(coffees => [...coffees, coffee]);
+    };
 
     React.useEffect(() => {
         fetch("/api/coffee")
@@ -14,7 +29,7 @@ function Coffees() {
 
     return (
         <section className={styles.main}>
-            <CoffeeTitle />
+            <CoffeeTitle addCoffee={addCoffee} />
             {coffees.length &&
                 coffees.map((coffee: any) => <SingleCoffee key={coffee.id} {...coffee} />)}
         </section>

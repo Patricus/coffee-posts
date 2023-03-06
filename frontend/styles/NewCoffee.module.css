@@ -1,14 +1,40 @@
 .modal {
     position: absolute;
-    top: 30px;
+    top: 50px;
     padding: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     box-shadow: 0 0 5px 3px orange;
     background-color: white;
     z-index: 1;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .title {
     font-weight: 600;
+    font-size: larger;
     margin: 0px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    margin: 10px;
+    margin-bottom: 0;
+    max-width: 100%;
+}
+.form > button {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.label {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+}
+.input {
+    max-width: 50%;
 }

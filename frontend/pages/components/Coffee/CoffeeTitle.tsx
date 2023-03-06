@@ -3,7 +3,7 @@ import NewCoffee from "./NewCoffee";
 import styles from "../../../styles/Coffees.module.css";
 import btn from "../../../styles/Button.module.css";
 
-function CoffeeTitle() {
+function CoffeeTitle({ addCoffee }: { addCoffee: any }) {
     const [modal, setModal] = React.useState(false);
 
     return (
@@ -20,7 +20,7 @@ function CoffeeTitle() {
             </div>
             {modal && (
                 <>
-                    <NewCoffee />
+                    <NewCoffee addCoffee={addCoffee} setModal={setModal} />
                 </>
             )}
         </>
