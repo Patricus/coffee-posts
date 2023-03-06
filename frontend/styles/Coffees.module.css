@@ -1,4 +1,5 @@
 .main {
+    position: relative;
 }
 .titleContainer {
     max-width: 220px;
@@ -11,18 +12,4 @@
 .title {
     font-weight: 500;
     margin: 0px;
-}
-.newButton {
-    height: min-content;
-    border: 1px solid orange;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 1px -1px 1px orange;
-    margin: 5px;
-    cursor: pointer;
-}
-
-.newButton:hover {
-    box-shadow: -1px 1px 1px orange;
-    position: relative;
 }

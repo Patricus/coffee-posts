@@ -1,6 +1,7 @@
 import React from "react";
 import NewPost from "./NewPost";
 import styles from "../../../styles/Posts.module.css";
+import btn from "../../../styles/Button.module.css";
 
 function PostTitle({ order, setOrder }: { order: string; setOrder: (order: string) => void }) {
     const [modal, setModal] = React.useState(false);
@@ -8,7 +9,7 @@ function PostTitle({ order, setOrder }: { order: string; setOrder: (order: strin
     return (
         <div className={styles.postContainer}>
             <h2 className={styles.title}>Posts</h2>
-            <button className={styles.newButton} onClick={() => setModal(modal => !modal)}>
+            <button className={btn.style} onClick={() => setModal(modal => !modal)}>
                 New Post
             </button>
             <select
@@ -20,7 +21,7 @@ function PostTitle({ order, setOrder }: { order: string; setOrder: (order: strin
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </select>
-            {modal && <NewPost setModal={setModal}/>}
+            {modal && <NewPost setModal={setModal} />}
         </div>
     );
 }
