@@ -5,16 +5,17 @@ import styles from "../../../styles/Posts.module.css";
 
 function Posts() {
     const [posts, setPosts] = React.useState([]);
+    const [order, setOrder] = React.useState("asc");
 
     React.useEffect(() => {
-        fetch("/api/post")
+        fetch(`/api/post?order=${order}`)
             .then(res => res.json())
             .then(data => setPosts(data));
-    }, [setPosts]);
+    }, [setPosts, order]);
 
     return (
         <section className={styles.main}>
-            <PostTitle />
+            <PostTitle order={order} setOrder={setOrder} />
             {posts.length && posts.map((post: any) => <SinglePost key={post.id} {...post} />)}
         </section>
     );

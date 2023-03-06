@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "../../../styles/Posts.module.css";
 
-function PostTitle() {
-    const [order, setOrder] = React.useState("asc");
+function PostTitle({ order, setOrder }: { order: string; setOrder: (order: string) => void }) {
     return (
         <div className={styles.postContainer}>
             <h2 className={styles.title}>Posts</h2>
