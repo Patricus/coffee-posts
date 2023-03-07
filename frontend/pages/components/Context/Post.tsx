@@ -19,6 +19,7 @@ export const PostProvider = ({ children }: { children: any }) => {
     const [posts, setPosts] = React.useState<Post[]>([]);
 
     const addPost = (post: Post) => {
+        console.log("adding post", post);
         setPosts(posts => [...posts, post]);
     };
 

@@ -1,11 +1,13 @@
 import React from "react";
+import { usePost } from "../Context/Post";
 import PostTitle from "./PostTitle";
 import SinglePost from "./SinglePost";
 import styles from "../../../styles/Posts.module.css";
 
 function Posts() {
-    const [posts, setPosts] = React.useState([]);
     const [order, setOrder] = React.useState("asc");
+
+    const { posts, setPosts } = usePost();
 
     React.useEffect(() => {
         fetch(`/api/post?order=${order}`)

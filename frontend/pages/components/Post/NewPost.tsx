@@ -21,11 +21,10 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
             body: JSON.stringify({
                 title,
                 rating,
-                coffee,
+                coffee_id: coffee,
                 text,
             }),
         });
-        console.log("res", res); //TODO: finish post creation
         if (res.ok) {
             const post = await res.json();
             addPost(post);
