@@ -1,10 +1,13 @@
 import React from "react";
+import { useCoffee } from "../../components/Context/Coffee";
 import NewCoffee from "./NewCoffee";
 import styles from "../../../styles/Coffees.module.css";
 import btn from "../../../styles/Button.module.css";
 
-function CoffeeTitle({ addCoffee }: { addCoffee: any }) {
+function CoffeeTitle() {
     const [modal, setModal] = React.useState(false);
+
+    const { addCoffee } = useCoffee();
 
     return (
         <>

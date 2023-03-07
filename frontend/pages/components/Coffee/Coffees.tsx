@@ -1,29 +1,11 @@
 import React from "react";
+import { useCoffee } from "../../components/Context/Coffee";
 import CoffeeTitle from "./CoffeeTitle";
 import SingleCoffee from "./SingleCoffee";
-import { createContext } from "react";
 import styles from "../../../styles/Coffees.module.css";
 
-interface Coffee {
-    id: number;
-    name: string;
-    year: number;
-    caffeine_content: number;
-    caffeine_percentage: number;
-    created_at: string;
-    updated_at: string;
-}
-
 function Coffees() {
-    const [coffees, setCoffees] = React.useState<Coffee[]>([]);
-
-    const addCoffee = (coffee: any) => {
-        setCoffees(coffees => [...coffees, coffee]);
-    };
-
-    const deleteCoffee = (id: number) => {
-        setCoffees(coffees => coffees.filter(coffee => coffee.id !== id));
-    };
+    const { coffees, setCoffees, addCoffee, deleteCoffee } = useCoffee();
 
     React.useEffect(() => {
         fetch("/api/coffee")
@@ -33,11 +15,9 @@ function Coffees() {
 
     return (
         <section className={styles.main}>
-            <CoffeeTitle addCoffee={addCoffee} />
+            <CoffeeTitle />
             {coffees.length &&
-                coffees.map((coffee: any) => (
-                    <SingleCoffee key={coffee.id} coffee={coffee} deleteCoffee={deleteCoffee} />
-                ))}
+                coffees.map((coffee: any) => <SingleCoffee key={coffee.id} coffee={coffee} />)}
         </section>
     );
 }
