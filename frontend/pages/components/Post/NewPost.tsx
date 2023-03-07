@@ -1,15 +1,17 @@
 import React from "react";
 import { usePost } from "../Context/Post";
+import { useCoffee } from "../Context/Coffee";
 import styles from "../../../styles/NewPost.module.css";
 import btn from "../../../styles/Button.module.css";
 
 function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) {
     const [title, setTitle] = React.useState("");
     const [rating, setRating] = React.useState(3);
-    const [coffee, setCoffee] = React.useState(1);
+    const [coffeeId, setCoffeeId] = React.useState(1);
     const [text, setText] = React.useState("");
 
     const { addPost } = usePost();
+    const { coffees } = useCoffee();
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -21,12 +23,13 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
             body: JSON.stringify({
                 title,
                 rating,
-                coffee_id: coffee,
+                coffee_id: coffeeId,
                 text,
             }),
         });
         if (res.ok) {
             const post = await res.json();
+            post.coffee = coffees.find(coffee => coffee.id === coffeeId);
             addPost(post);
             setModal(false);
         }
@@ -71,9 +74,13 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
                             <select
                                 name="coffee"
                                 id="coffee"
-                                value={coffee}
-                                onChange={e => setCoffee(parseInt(e.target.value))}>
-                                <option value={1}>1</option>
+                                value={coffeeId}
+                                onChange={e => setCoffeeId(parseInt(e.target.value))}>
+                                {coffees.map((coffee: any) => (
+                                    <option key={coffee.id} value={coffee.id}>
+                                        {coffee.name}
+                                    </option>
+                                ))}
                             </select>
                         </label>
                     </div>

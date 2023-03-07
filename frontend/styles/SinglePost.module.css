@@ -6,6 +6,7 @@
     margin: 0 auto;
     max-width: 800px;
     padding: 0 1rem;
+    border-bottom: 3px dashed rgba(255, 165, 0, 0.5);
 }
 .title {
 }

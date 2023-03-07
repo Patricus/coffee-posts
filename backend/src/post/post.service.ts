@@ -40,6 +40,7 @@ export class PostService {
     await queryRunner.startTransaction();
 
     const posts = await queryRunner.manager.find(Post, {
+      relations: ['coffee'],
       order: {
         title: order,
       },
@@ -57,6 +58,7 @@ export class PostService {
     await queryRunner.startTransaction();
 
     const post = await queryRunner.manager.findOne(Post, {
+      relations: ['coffee'],
       where: {
         id,
       },
