@@ -13,7 +13,9 @@ function SingleCoffee({ coffee }: { coffee: any }) {
     };
     return (
         <div className={styles.container}>
-            <h2 className={styles.icon}>C</h2>
+            <h2 className={styles.icon}>
+                <i className="fa-solid fa-mug-hot"></i>
+            </h2>
             <p className={styles.nameYear}>
                 {coffee.name} - {coffee.year}
             </p>
