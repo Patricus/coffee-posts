@@ -13,13 +13,18 @@
     visibility: visible;
 }
 .title {
+    word-wrap: break-word;
+    text-align: center;
 }
 .rating {
     margin: 0;
 }
 .text {
+    width: 100%;
     font-weight: 100;
     font-size: 0.8rem;
+    word-wrap: break-word;
+    text-align: center;
 }
 .percentage {
     font-weight: 600;

@@ -45,16 +45,16 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
                 <h2 className={styles.title}>Create Post</h2>
                 <form className={styles.form} onSubmit={submit}>
                     <label htmlFor="title" className={styles.label}>
-                        Title:
                         <input
                             id="title"
                             className={styles.input}
                             type="text"
+                            placeholder="Title"
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         />
                     </label>
-                    <div>
+                    <div className={styles.ratingCoffee}>
                         <label htmlFor="rating">
                             Rating:
                             <select
@@ -85,9 +85,9 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
                         </label>
                     </div>
                     <label htmlFor="text" className={styles.label}>
-                        Text:
                         <textarea
                             id="text"
+                            placeholder="Post text"
                             className={styles.textarea}
                             value={text}
                             onChange={e => setText(e.target.value)}
