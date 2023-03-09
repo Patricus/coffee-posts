@@ -1,8 +1,8 @@
 import React from "react";
 import { usePost } from "../Context/Post";
 import { useCoffee } from "../Context/Coffee";
-import styles from "../../../styles/NewPost.module.css";
-import btn from "../../../styles/Button.module.css";
+import styles from "../../styles/NewPost.module.css";
+import btn from "../../styles/Button.module.css";
 
 function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) {
     const { addPost } = usePost();

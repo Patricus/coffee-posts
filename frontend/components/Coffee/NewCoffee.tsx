@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../../../styles/NewCoffee.module.css";
-import btn from "../../../styles/Button.module.css";
+import styles from "../../styles/NewCoffee.module.css";
+import btn from "../../styles/Button.module.css";
 
 function NewCoffee({ addCoffee, setModal }: { addCoffee: any; setModal: any }) {
     const [name, setName] = React.useState("");

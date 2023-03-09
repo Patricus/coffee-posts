@@ -1,7 +1,7 @@
 import React from "react";
 import NewPost from "./NewPost";
-import styles from "../../../styles/Posts.module.css";
-import btn from "../../../styles/Button.module.css";
+import styles from "../../styles/Posts.module.css";
+import btn from "../../styles/Button.module.css";
 
 function PostTitle({ order, setOrder }: { order: string; setOrder: (order: string) => void }) {
     const [modal, setModal] = React.useState(false);

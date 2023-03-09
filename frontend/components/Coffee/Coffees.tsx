@@ -2,7 +2,7 @@ import React from "react";
 import { useCoffee } from "../../components/Context/Coffee";
 import CoffeeTitle from "./CoffeeTitle";
 import SingleCoffee from "./SingleCoffee";
-import styles from "../../../styles/Coffees.module.css";
+import styles from "../../styles/Coffees.module.css";
 
 function Coffees() {
     const { coffees, setCoffees, addCoffee, deleteCoffee } = useCoffee();

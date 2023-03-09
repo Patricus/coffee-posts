@@ -1,7 +1,7 @@
 import React from "react";
 import { usePost } from "../Context/Post";
-import styles from "../../../styles/SinglePost.module.css";
-import btn from "../../../styles/Button.module.css";
+import styles from "../../styles/SinglePost.module.css";
+import btn from "../../styles/Button.module.css";
 
 function SinglePost(post: any) {
     const { deletePost } = usePost();

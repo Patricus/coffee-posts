@@ -1,7 +1,7 @@
 import React from "react";
 import { useCoffee } from "../Context/Coffee";
-import styles from "../../../styles/SingleCoffee.module.css";
-import btn from "../../../styles/Button.module.css";
+import styles from "../../styles/SingleCoffee.module.css";
+import btn from "../../styles/Button.module.css";
 
 function SingleCoffee({ coffee }: { coffee: any }) {
     const { deleteCoffee } = useCoffee();

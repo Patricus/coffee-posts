@@ -2,7 +2,7 @@ import React from "react";
 import { usePost } from "../Context/Post";
 import PostTitle from "./PostTitle";
 import SinglePost from "./SinglePost";
-import styles from "../../../styles/Posts.module.css";
+import styles from "../../styles/Posts.module.css";
 
 function Posts() {
     const [order, setOrder] = React.useState("asc");
