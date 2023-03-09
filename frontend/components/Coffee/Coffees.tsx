@@ -18,8 +18,11 @@ function Coffees() {
     return (
         <section className={styles.main}>
             <CoffeeTitle />
-            {coffees.length &&
-                coffees.map((coffee: any) => <SingleCoffee key={coffee.id} coffee={coffee} />)}
+            {coffees.length ? (
+                coffees.map((coffee: any) => <SingleCoffee key={coffee.id} coffee={coffee} />)
+            ) : (
+                <h3>No Coffees</h3>
+            )}
         </section>
     );
 }

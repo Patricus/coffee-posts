@@ -18,7 +18,11 @@ function Posts() {
     return (
         <section className={styles.main}>
             <PostTitle order={order} setOrder={setOrder} />
-            {posts.length && posts.map((post: any) => <SinglePost key={post.id} {...post} />)}
+            {posts.length ? (
+                posts.map((post: any) => <SinglePost key={post.id} {...post} />)
+            ) : (
+                <h2 style={{ textAlign: "center" }}>No Posts</h2>
+            )}
         </section>
     );
 }

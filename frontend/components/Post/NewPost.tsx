@@ -8,6 +8,19 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
     const { addPost } = usePost();
     const { coffees } = useCoffee();
 
+    if (!coffees.length)
+        return (
+            <section className={styles.modalBackground} onClick={() => setModal(false)}>
+                <div className={styles.modal} onClick={e => e.stopPropagation()}>
+                    <h2 className={styles.title}>No Coffees</h2>
+                    <p className={styles.text}>Please add a coffee before adding a post.</p>
+                    <button className={btn.style} onClick={() => setModal(false)}>
+                        Close
+                    </button>
+                </div>
+            </section>
+        );
+
     const [title, setTitle] = React.useState("");
     const [rating, setRating] = React.useState(3);
     const [coffeeId, setCoffeeId] = React.useState(coffees[0].id);
