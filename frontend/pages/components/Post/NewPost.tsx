@@ -5,13 +5,13 @@ import styles from "../../../styles/NewPost.module.css";
 import btn from "../../../styles/Button.module.css";
 
 function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) {
-    const [title, setTitle] = React.useState("");
-    const [rating, setRating] = React.useState(3);
-    const [coffeeId, setCoffeeId] = React.useState(1);
-    const [text, setText] = React.useState("");
-
     const { addPost } = usePost();
     const { coffees } = useCoffee();
+
+    const [title, setTitle] = React.useState("");
+    const [rating, setRating] = React.useState(3);
+    const [coffeeId, setCoffeeId] = React.useState(coffees[0].id);
+    const [text, setText] = React.useState("");
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -29,7 +29,9 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
         });
         if (res.ok) {
             const post = await res.json();
-            post.coffee = coffees.find(coffee => coffee.id === coffeeId);
+            post.coffee = coffees.find(coffee => {
+                return coffee.id === coffeeId;
+            });
             addPost(post);
             setModal(false);
         }

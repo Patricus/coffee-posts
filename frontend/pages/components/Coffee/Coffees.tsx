@@ -10,7 +10,9 @@ function Coffees() {
     React.useEffect(() => {
         fetch("/api/coffee")
             .then(res => res.json())
-            .then(data => setCoffees(data));
+            .then(data => {
+                setCoffees(data);
+            });
     }, [setCoffees]);
 
     return (
