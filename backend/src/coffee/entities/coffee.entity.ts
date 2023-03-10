@@ -17,10 +17,10 @@ export class Coffee {
   @Column()
   year: number;
 
-  @Column({ name: 'caffeine_content', type: 'numeric' })
+  @Column({ name: 'caffeine_content', type: 'real' })
   caffeine_content: number;
 
-  @Column({ name: 'caffeine_percentage', type: 'numeric' })
+  @Column({ name: 'caffeine_percentage', type: 'real' })
   caffeine_percentage: number;
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

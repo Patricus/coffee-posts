@@ -23,7 +23,7 @@ export class Post {
   @Column({ name: 'text', type: 'text' })
   text: string;
 
-  @Column({ name: 'rating', type: 'numeric' })
+  @Column()
   rating: number;
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

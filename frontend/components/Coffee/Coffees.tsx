@@ -1,11 +1,11 @@
 import React from "react";
-import { useCoffee } from "../../components/Context/Coffee";
+import { useCoffee } from "../Context/Coffee";
 import CoffeeTitle from "./CoffeeTitle";
 import SingleCoffee from "./SingleCoffee";
 import styles from "../../styles/Coffees.module.css";
 
 function Coffees() {
-    const { coffees, setCoffees, addCoffee, deleteCoffee } = useCoffee();
+    const { coffees, setCoffees } = useCoffee();
 
     React.useEffect(() => {
         fetch("/api/coffee")
