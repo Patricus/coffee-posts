@@ -15,14 +15,6 @@ function SinglePost(post: any) {
         );
     }
 
-    const handleDelete = () => {
-        fetch(`/api/post/${post.id}`, {
-            method: "DELETE",
-        }).then(() => {
-            deletePost(post.id);
-        });
-    };
-
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>{post.title}</h2>
@@ -32,7 +24,9 @@ function SinglePost(post: any) {
                 className={
                     styles.percentage
                 }>{`${post.coffee.name} - ${post.coffee.caffeine_percentage} mg per oz`}</p>
-            <button onClick={handleDelete} className={`${btn.style} ${styles.deleteBtn}`}>
+            <button
+                onClick={() => deletePost(post.id)}
+                className={`${btn.style} ${styles.deleteBtn}`}>
                 X
             </button>
         </div>

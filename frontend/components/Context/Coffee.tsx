@@ -1,5 +1,4 @@
 import React from "react";
-
 interface Coffee {
     id: number;
     name: string;
@@ -25,7 +24,11 @@ export const CoffeeProvider = ({ children }: { children: any }) => {
     };
 
     const deleteCoffee = (id: number) => {
-        setCoffees(coffees => coffees.filter(coffee => coffee.id !== id));
+        fetch(`/api/coffee/${id}`, {
+            method: "DELETE",
+        })
+            .then(() => setCoffees(coffees => coffees.filter(coffee => coffee.id !== id)))
+            .catch(err => console.error(err));
     };
 
     return (

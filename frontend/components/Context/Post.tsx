@@ -23,7 +23,11 @@ export const PostProvider = ({ children }: { children: any }) => {
     };
 
     const deletePost = (id: number) => {
-        setPosts(posts => posts.filter(post => post.id !== id));
+        fetch(`/api/post/${id}`, {
+            method: "DELETE",
+        }).then(() => {
+            setPosts(posts => posts.filter(post => post.id !== id));
+        });
     };
 
     return (
