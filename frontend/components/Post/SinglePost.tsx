@@ -24,11 +24,14 @@ function SinglePost(post: any) {
                 className={
                     styles.percentage
                 }>{`${post.coffee.name} - ${post.coffee.caffeine_percentage} mg per oz`}</p>
-            <button
-                onClick={() => deletePost(post.id)}
-                className={`${btn.style} ${styles.deleteBtn}`}>
-                X
-            </button>
+            <span className={styles.buttons}>
+                <button className={btn.style}>
+                    <i className="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button onClick={() => deletePost(post.id)} className={btn.style}>
+                    <i className="fa-solid fa-x"></i>
+                </button>
+            </span>
         </div>
     );
 }

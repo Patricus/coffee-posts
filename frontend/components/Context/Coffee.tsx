@@ -12,6 +12,7 @@ interface Coffee {
 const CoffeeContext = React.createContext({
     coffees: [] as Coffee[],
     setCoffees: (coffees: Coffee[]) => {},
+    editCoffee: (coffee: Coffee) => {},
     addCoffee: (coffee: Coffee) => {},
     deleteCoffee: (id: number) => {},
 });
@@ -23,6 +24,10 @@ export const CoffeeProvider = ({ children }: { children: any }) => {
         setCoffees(coffees => [...coffees, coffee]);
     };
 
+    const editCoffee = (coffee: Coffee) => {
+        setCoffees(coffees => coffees.map(c => (c.id === coffee.id ? coffee : c)));
+    };
+
     const deleteCoffee = (id: number) => {
         fetch(`/api/coffee/${id}`, {
             method: "DELETE",
@@ -32,7 +37,8 @@ export const CoffeeProvider = ({ children }: { children: any }) => {
     };
 
     return (
-        <CoffeeContext.Provider value={{ coffees, setCoffees, addCoffee, deleteCoffee }}>
+        <CoffeeContext.Provider
+            value={{ coffees, setCoffees, editCoffee, addCoffee, deleteCoffee }}>
             {children}
         </CoffeeContext.Provider>
     );

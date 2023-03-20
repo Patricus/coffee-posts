@@ -44,6 +44,7 @@ export class CoffeeController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
+    updateCoffeeDto.caffeine_percentage = updateCoffeeDto.caffeine_content / 6;
     return this.coffeeService.update(+id, updateCoffeeDto);
   }
 

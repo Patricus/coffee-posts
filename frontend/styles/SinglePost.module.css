@@ -9,7 +9,7 @@
     padding: 0 1rem;
     border-bottom: 3px dashed rgba(255, 165, 0, 0.5);
 }
-.container:hover .deleteBtn {
+.container:hover .buttons {
     visibility: visible;
 }
 .title {
@@ -30,7 +30,7 @@
     font-weight: 600;
     font-size: 0.9rem;
 }
-.deleteBtn {
+.buttons {
     position: absolute;
     visibility: hidden;
     bottom: 10px;
