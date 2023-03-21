@@ -69,7 +69,7 @@ export class PostService {
     return post;
   }
 
-  async findCoffee(search: number | string) {
+  async findCoffee(search: number | string, order: Order = 'asc') {
     const queryRunner = this.dataSource.createQueryRunner();
 
     await queryRunner.connect();
@@ -83,8 +83,11 @@ export class PostService {
       }
     })();
     const post = await queryRunner.manager.find(Post, {
-      relations: { coffee: true },
+      relations: ['coffee'],
       where,
+      order: {
+        title: order,
+      },
     });
     await queryRunner.release();
 
