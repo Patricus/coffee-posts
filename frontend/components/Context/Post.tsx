@@ -12,6 +12,7 @@ const PostContext = React.createContext({
     posts: [] as Post[],
     setPosts: (posts: Post[]) => {},
     addPost: (post: Post) => {},
+    editPost: (post: Post) => {},
     deletePost: (id: number) => {},
 });
 
@@ -20,6 +21,10 @@ export const PostProvider = ({ children }: { children: any }) => {
 
     const addPost = (post: Post) => {
         setPosts(posts => [...posts, post]);
+    };
+
+    const editPost = (post: Post) => {
+        setPosts(posts => posts.map(p => (p.id === post.id ? post : p)));
     };
 
     const deletePost = (id: number) => {
@@ -31,7 +36,7 @@ export const PostProvider = ({ children }: { children: any }) => {
     };
 
     return (
-        <PostContext.Provider value={{ posts, setPosts, addPost, deletePost }}>
+        <PostContext.Provider value={{ posts, setPosts, addPost, editPost, deletePost }}>
             {children}
         </PostContext.Provider>
     );

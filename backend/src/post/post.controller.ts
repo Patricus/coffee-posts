@@ -48,6 +48,7 @@ export class PostController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
+    console.log('updatePostDto', id);
     return this.postService.update(+id, updatePostDto);
   }
 
