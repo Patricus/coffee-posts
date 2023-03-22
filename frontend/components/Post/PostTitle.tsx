@@ -3,9 +3,12 @@ import NewPost from "./NewPost";
 import SearchBar from "./SearchBar";
 import styles from "../../styles/Posts.module.css";
 import btn from "../../styles/Button.module.css";
+import { usePost } from "../Context/Post";
 
-function PostTitle({ order, setOrder }: { order: string; setOrder: (order: string) => void }) {
+function PostTitle() {
     const [modal, setModal] = React.useState(false);
+
+    const { order, setOrder } = usePost();
 
     return (
         <div className={styles.postContainer}>
@@ -13,7 +16,7 @@ function PostTitle({ order, setOrder }: { order: string; setOrder: (order: strin
             <button className={btn.style} onClick={() => setModal(modal => !modal)}>
                 New Post
             </button>
-            <SearchBar order={order} setOrder={setOrder} />
+            <SearchBar />
             <select
                 className={styles.order}
                 name="order"

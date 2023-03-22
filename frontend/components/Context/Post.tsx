@@ -14,10 +14,19 @@ const PostContext = React.createContext({
     addPost: (post: Post) => {},
     editPost: (post: Post) => {},
     deletePost: (id: number) => {},
+    order: "asc" as string,
+    setOrder: (order: string) => {},
 });
 
 export const PostProvider = ({ children }: { children: any }) => {
     const [posts, setPosts] = React.useState<Post[]>([]);
+    const [order, setOrder] = React.useState<string>("asc");
+
+    React.useEffect(() => {
+        fetch(`/api/post?order=${order}`)
+            .then(res => res.json())
+            .then(data => setPosts(data));
+    }, [setPosts]);
 
     const addPost = (post: Post) => {
         setPosts(posts => [...posts, post]);
@@ -36,7 +45,8 @@ export const PostProvider = ({ children }: { children: any }) => {
     };
 
     return (
-        <PostContext.Provider value={{ posts, setPosts, addPost, editPost, deletePost }}>
+        <PostContext.Provider
+            value={{ posts, setPosts, addPost, editPost, deletePost, order, setOrder }}>
             {children}
         </PostContext.Provider>
     );

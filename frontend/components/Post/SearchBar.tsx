@@ -1,9 +1,12 @@
 import React from "react";
+import { usePost } from "../Context/Post";
 import styles from "../../styles/Posts.module.css";
 
-function SearchBar({ order, setOrder }: { order: string; setOrder: (order: string) => void }) {
+function SearchBar() {
     const [search, setSearch] = React.useState("");
     const [dropdown, setDropdown] = React.useState([]);
+
+    const { order, setOrder } = usePost();
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
@@ -11,6 +14,7 @@ function SearchBar({ order, setOrder }: { order: string; setOrder: (order: strin
 
     const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
+        fetch(`/api/post/coffee/${search}?order=${order}`);
     };
 
     return (
