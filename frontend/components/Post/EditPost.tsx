@@ -57,7 +57,6 @@ function EditPost({
                 text,
             }),
         });
-        console.log("res", res);
         if (res.ok) {
             const post = await res.json();
             post.coffee = coffees.find(coffee => {

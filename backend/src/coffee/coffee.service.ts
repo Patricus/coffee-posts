@@ -52,7 +52,6 @@ export class CoffeeService {
   }
 
   async findCoffee(name: string) {
-    console.log('coffee name', name);
     const queryRunner = this.dataSource.createQueryRunner();
 
     await queryRunner.connect();
@@ -62,8 +61,6 @@ export class CoffeeService {
       `SELECT * FROM coffee WHERE name ILike $1`,
       ['%' + name + '%'],
     );
-
-    console.log('coffees', coffees);
 
     await queryRunner.release();
 
