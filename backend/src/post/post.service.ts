@@ -70,6 +70,8 @@ export class PostService {
   }
 
   async findCoffee(search: string, order: Order = 'asc') {
+    console.log('coffee search', search, order);
+
     const queryRunner = this.dataSource.createQueryRunner();
 
     await queryRunner.connect();

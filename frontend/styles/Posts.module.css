@@ -24,32 +24,3 @@
     padding: 2px 0;
     cursor: pointer;
 }
-
-.searchBar {
-    margin-right: 0;
-    margin-left: auto;
-    width: 100%;
-    max-width: 300px;
-    min-width: 100px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2px;
-}
-
-.searchBar .input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-}
-
-.searchBar .input:focus {
-    outline: none;
-}
-
-.searchBtn {
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 2px;
-}

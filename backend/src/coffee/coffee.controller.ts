@@ -30,8 +30,13 @@ export class CoffeeController {
   }
 
   @Get()
-  findAll(@Query('order') order: Order) {
-    return this.coffeeService.findAll(order);
+  findAll() {
+    return this.coffeeService.findAll();
+  }
+
+  @Get('search/:search')
+  findCoffee(@Param('search') search: string) {
+    return this.coffeeService.findCoffee(search);
   }
 
   @Get(':id')

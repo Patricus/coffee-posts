@@ -1,0 +1,57 @@
+.searchBar {
+    position: relative;
+    margin-right: 0;
+    margin-left: auto;
+    width: 100%;
+    max-width: 300px;
+    min-width: 100px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.searchBtn {
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 2px;
+}
+
+.dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid grey;
+    width: 99%;
+    top: 1.2rem;
+    z-index: 1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdownItem {
+    padding: 2px 0;
+    cursor: pointer;
+    padding: 0 5px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.dropdownItem:hover {
+    background-color: orange;
+}
+
+.invisible {
+    display: none;
+}

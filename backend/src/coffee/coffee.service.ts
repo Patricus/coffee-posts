@@ -34,7 +34,7 @@ export class CoffeeService {
     return createCoffeeDto;
   }
 
-  async findAll(order: Order = 'asc') {
+  async findAll() {
     const queryRunner = this.dataSource.createQueryRunner();
 
     await queryRunner.connect();
@@ -42,9 +42,28 @@ export class CoffeeService {
 
     const coffees = await queryRunner.manager.find(Coffee, {
       order: {
-        name: order,
+        name: 'asc',
       },
     });
+
+    await queryRunner.release();
+
+    return coffees;
+  }
+
+  async findCoffee(name: string) {
+    console.log('coffee name', name);
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    const coffees = await queryRunner.query(
+      `SELECT * FROM coffee WHERE name ILike $1`,
+      ['%' + name + '%'],
+    );
+
+    console.log('coffees', coffees);
 
     await queryRunner.release();
 
