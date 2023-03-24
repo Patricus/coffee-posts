@@ -8,6 +8,9 @@ export const dataSourceOptions: DataSourceOptions = (() => {
       schema: process.env.DB_SCHEMA || 'public',
       entities: ['dist/**/*.entity{.ts,.js}'],
       migrations: ['dist/db/migrations/*{.ts,.js}'],
+      ssl: {
+        rejectUnauthorized: false,
+      },
     } as DataSourceOptions;
   } else {
     return {
