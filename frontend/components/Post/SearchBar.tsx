@@ -16,7 +16,7 @@ function SearchBar() {
     const [search, setSearch] = React.useState("");
     const [dropdown, setDropdown] = React.useState<Coffee[]>([]);
 
-    const { setPosts, order } = usePost();
+    const { setPosts, order, setOrder } = usePost();
 
     const handleSearch = (itemName: string) => {
         setSearch(itemName);
@@ -28,6 +28,7 @@ function SearchBar() {
     const clearSearch = () => {
         setSearch("");
         setDropdown([]);
+        setOrder("asc");
         fetch(`api/post?order=${order}`)
             .then(res => res.json())
             .then(data => setPosts(data));
