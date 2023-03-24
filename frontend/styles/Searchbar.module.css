@@ -12,6 +12,11 @@
     gap: 2px;
 }
 
+.input:focus ~ .dropdown,
+.dropdown:active {
+    display: block;
+}
+
 .input {
     width: 100%;
     border: none;
@@ -29,11 +34,13 @@
 }
 
 .dropdown {
+    display: none;
     position: absolute;
     background-color: white;
     border: 1px solid grey;
-    width: 99%;
-    top: 1.2rem;
+    width: calc(99% - 4px);
+    top: 1.3rem;
+    left: 2px;
     z-index: 1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -52,6 +59,12 @@
     background-color: orange;
 }
 
-.invisible {
-    display: none;
+.dropdownItem:hover::after {
+    content: "click to search";
+    font-size: 0.8rem;
+    font-weight: 200;
+    background-color: orange;
+    position: absolute;
+    right: 3px;
+    top: 2px;
 }

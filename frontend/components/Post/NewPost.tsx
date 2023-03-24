@@ -8,6 +8,11 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
     const { addPost } = usePost();
     const { coffees } = useCoffee();
 
+    const [title, setTitle] = React.useState("");
+    const [rating, setRating] = React.useState(3);
+    const [coffeeId, setCoffeeId] = React.useState(coffees[0].id);
+    const [text, setText] = React.useState("");
+
     if (!coffees.length)
         return (
             <section className={styles.modalBackground} onClick={() => setModal(false)}>
@@ -20,11 +25,6 @@ function NewPost({ setModal }: { setModal: React.Dispatch<React.SetStateAction<b
                 </div>
             </section>
         );
-
-    const [title, setTitle] = React.useState("");
-    const [rating, setRating] = React.useState(3);
-    const [coffeeId, setCoffeeId] = React.useState(coffees[0].id);
-    const [text, setText] = React.useState("");
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

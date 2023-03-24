@@ -15,37 +15,30 @@ interface Coffee {
 function SearchBar() {
     const [search, setSearch] = React.useState("");
     const [dropdown, setDropdown] = React.useState<Coffee[]>([]);
-    const [hasSearched, setHasSearched] = React.useState(false);
 
     const { setPosts, order } = usePost();
 
-    const handleSearch = () => {
-        if (hasSearched) {
-            setHasSearched(false);
-            setSearch("");
-            setDropdown([]);
-            fetch(`api/post?order=${order}`)
-                .then(res => res.json())
-                .then(data => setPosts(data));
-        } else {
-            setHasSearched(true);
-            setDropdown([]);
-            fetch(`/api/post/coffee/${search}?order=${order}`)
-                .then(res => res.json())
-                .then(data => setPosts(data));
-        }
+    const handleSearch = (itemName: string) => {
+        setSearch(itemName);
+        fetch(`/api/post/coffee/${itemName}?order=${order}`)
+            .then(res => res.json())
+            .then(data => setPosts(data));
+    };
+
+    const clearSearch = () => {
+        setSearch("");
+        setDropdown([]);
+        fetch(`api/post?order=${order}`)
+            .then(res => res.json())
+            .then(data => setPosts(data));
     };
 
     const handleSetSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const search = e.target.value;
         setSearch(search);
-        if (search.length > 0) {
-            fetch(`/api/coffee/search/${search}`)
-                .then(res => res.json())
-                .then(data => setDropdown(data));
-        } else {
-            setDropdown([]);
-        }
+        fetch(`/api/coffee/search/${search}`)
+            .then(res => res.json())
+            .then(data => setDropdown(data));
     };
 
     return (
@@ -57,21 +50,21 @@ function SearchBar() {
                 value={search}
                 onChange={e => handleSetSearch(e)}
             />
-            <span onClick={handleSearch} className={styles.searchBtn}>
-                <i className={hasSearched ? "fa-solid fa-x" : "fa-solid fa-magnifying-glass"}></i>
-            </span>
-            {dropdown.length > 0 && !(dropdown.length === 1 && dropdown[0].name === search) && (
+            {search.length > 0 && (
+                <span onClick={clearSearch} className={styles.searchBtn}>
+                    <i className="fa-solid fa-x"></i>
+                </span>
+            )}
+            {dropdown.length > 0 && (
                 <div className={styles.dropdown}>
-                    {dropdown
-                        .filter((item: Coffee) => item.name !== search)
-                        .map((item: Coffee) => (
-                            <div
-                                key={item.id}
-                                className={styles.dropdownItem}
-                                onClick={() => setSearch(item.name)}>
-                                {item.name}
-                            </div>
-                        ))}
+                    {dropdown.map((item: Coffee) => (
+                        <div
+                            key={item.id}
+                            className={styles.dropdownItem}
+                            onClick={() => handleSearch(item.name)}>
+                            {item.name}
+                        </div>
+                    ))}
                 </div>
             )}
         </div>

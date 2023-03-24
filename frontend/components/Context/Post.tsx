@@ -23,10 +23,15 @@ export const PostProvider = ({ children }: { children: any }) => {
     const [order, setOrder] = React.useState<string>("asc");
 
     React.useEffect(() => {
-        fetch(`/api/post?order=${order}`)
+        fetch(`/api/post?order="asc"`)
             .then(res => res.json())
             .then(data => setPosts(data));
     }, [setPosts]);
+
+    React.useEffect(() => {
+        const reverse = [...posts].reverse();
+        setPosts(reverse);
+    }, [order]);
 
     const addPost = (post: Post) => {
         setPosts(posts => [...posts, post]);

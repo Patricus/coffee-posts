@@ -21,6 +21,11 @@ function EditPost({
     setModal: React.Dispatch<React.SetStateAction<boolean>>;
     post: Post;
 }) {
+    const [title, setTitle] = React.useState(post.text);
+    const [rating, setRating] = React.useState(post.rating);
+    const [coffeeId, setCoffeeId] = React.useState(post.coffee_id);
+    const [text, setText] = React.useState(post.text);
+
     const { editPost } = usePost();
     const { coffees } = useCoffee();
 
@@ -29,18 +34,13 @@ function EditPost({
             <section className={styles.modalBackground} onClick={() => setModal(false)}>
                 <div className={styles.modal} onClick={e => e.stopPropagation()}>
                     <h2 className={styles.title}>Error No Coffees</h2>
-                    <p className={styles.text}>This post shouldn't exist without coffees.</p>
+                    <p className={styles.text}>This post shouldn&apos;t exist without coffees.</p>
                     <button className={btn.style} onClick={() => setModal(false)}>
                         Close
                     </button>
                 </div>
             </section>
         );
-
-    const [title, setTitle] = React.useState(post.text);
-    const [rating, setRating] = React.useState(post.rating);
-    const [coffeeId, setCoffeeId] = React.useState(post.coffee_id);
-    const [text, setText] = React.useState(post.text);
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

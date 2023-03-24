@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Ann's Coffee</title>
+                <title>Ann&apos;s Coffee</title>
                 <meta name="description" content="Ann's Coffee" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
