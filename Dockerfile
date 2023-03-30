@@ -27,7 +27,6 @@ WORKDIR /app
 COPY --from=frontend /app/frontend/build ./frontend
 COPY --from=backend /app/backend ./
 
-EXPOSE 3000
 EXPOSE 8080
 
 CMD ["npm", "run", "start"]
