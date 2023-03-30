@@ -24,7 +24,7 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY --from=frontend /app/frontend/build ./frontend
+COPY --from=frontend /app/frontend/.next ./frontend
 COPY --from=backend /app/backend ./
 
 EXPOSE 8080
