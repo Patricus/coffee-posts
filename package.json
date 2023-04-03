@@ -11,7 +11,7 @@
         "migration:generate": "npm run --prefix backend typeorm -- migration:generate",
         "migration:run": "npm run --prefix backend typeorm -- migration:run",
         "migration:revert": "npm run --prefix backend typeorm -- migration:revert",
-        "start": "npm start --prefix backend",
+        "start": "npm start --prefix backend & npm start --prefix frontend",
         "build": "npm run build --prefix backend"
     },
     "repository": {
