@@ -34,7 +34,15 @@ export const PostProvider = ({ children }: { children: any }) => {
     }, [order]);
 
     const addPost = (post: Post) => {
-        setPosts(posts => [...posts, post]);
+        const newPosts = [...posts, post].sort((a: Post, b: Post) => {
+            if (order === "asc") {
+                return a.title < b.title ? -1 : 1;
+            } else {
+                return a.title > b.title ? -1 : 1;
+            }
+        });
+
+        setPosts(newPosts);
     };
 
     const editPost = (post: Post) => {

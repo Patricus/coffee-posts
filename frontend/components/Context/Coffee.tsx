@@ -21,7 +21,11 @@ export const CoffeeProvider = ({ children }: { children: any }) => {
     const [coffees, setCoffees] = React.useState<Coffee[]>([]);
 
     const addCoffee = (coffee: Coffee) => {
-        setCoffees(coffees => [...coffees, coffee]);
+        setCoffees(coffees =>
+            [...coffees, coffee].sort((a, b) => {
+                return a.name < b.name ? -1 : 1;
+            })
+        );
     };
 
     const editCoffee = (coffee: Coffee) => {
