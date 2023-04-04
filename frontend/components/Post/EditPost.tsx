@@ -21,7 +21,7 @@ function EditPost({
     setModal: React.Dispatch<React.SetStateAction<boolean>>;
     post: Post;
 }) {
-    const [title, setTitle] = React.useState(post.text);
+    const [title, setTitle] = React.useState(post.title);
     const [rating, setRating] = React.useState(post.rating);
     const [coffeeId, setCoffeeId] = React.useState(post.coffee_id);
     const [text, setText] = React.useState(post.text);
