@@ -50,6 +50,7 @@
 }
 
 .dropdownItem {
+    position: relative;
     padding: 2px 0;
     cursor: pointer;
     padding: 0 5px;
@@ -67,6 +68,6 @@
     font-weight: 200;
     background-color: orange;
     position: absolute;
-    right: 3px;
+    right: 1em;
     top: 2px;
 }
