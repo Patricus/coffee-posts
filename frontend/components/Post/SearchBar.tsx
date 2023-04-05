@@ -28,9 +28,17 @@ function SearchBar() {
     const clearSearch = () => {
         setSearch("");
         setDropdown([]);
-        setOrder("asc");
         fetch(`api/post?order=${order}`)
             .then(res => res.json())
+            .then(data =>
+                data.sort((a: Coffee, b: Coffee) => {
+                    if (order === "asc") {
+                        return a.name < b.name ? -1 : 1;
+                    } else {
+                        return a.name > b.name ? -1 : 1;
+                    }
+                })
+            )
             .then(data => setPosts(data));
     };
 
